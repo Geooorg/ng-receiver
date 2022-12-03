@@ -1,0 +1,12 @@
+
+http:
+  port: 19210
+log:
+  directory: /var/log/
+
+nats:
+  url: nats://localhost:4222
+
+temporal:
+  address: localhost:7233
+  namespace: receiver-service
