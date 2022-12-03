@@ -26,7 +26,10 @@ type temporalConfig struct {
 }
 
 type serverConfig struct {
-	Port string `mapstructure:"port"`
+	Port         string `mapstructure:"port"`
+	LogDirectory struct {
+		Directory string `mapstructure:"directory"`
+	} `mapstructure:"log"`
 }
 
 // rootCmd represents the base command when called without any subcommands
@@ -105,7 +108,8 @@ var serveHttpCmd = &cobra.Command{
 		//defer temporalClient.Close()
 
 		srv := &server.Server{
-			Port: cfg.ServerConfig.Port,
+			Port:         cfg.ServerConfig.Port,
+			LogDirectory: cfg.ServerConfig.LogDirectory.Directory,
 			//TemporalClient: &temporalClient,
 		}
 
