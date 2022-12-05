@@ -1,6 +1,9 @@
 package common
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/google/uuid"
+)
 
 type MessageType int64
 
@@ -24,4 +27,14 @@ func AsString(m MessageType) string {
 	default:
 		return fmt.Sprintf("Unknown type: (%d)", m)
 	}
+}
+
+type MessageEnvelope struct {
+	UUID                 uuid.UUID
+	MessageType          string
+	ObjectNode           []byte
+	SentAtTimestamp      int64
+	WarnrechnerId        string
+	WarnrechnerStationId string
+	WarnrechnerHostname  string
 }
